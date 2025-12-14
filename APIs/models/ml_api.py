@@ -8,6 +8,10 @@ import tensorflow as tf
 
 from tensorflow.keras.models import load_model
 from tensorflow.keras import backend as K
+import os
+from dotenv import load_dotenv
+
+load_dotenv() 
 
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
@@ -33,9 +37,9 @@ MODEL_PATHS = {
 
 # Configure Cloudinary
 cloudinary.config(
-    cloud_name="dlaphjffq",
-    api_key="588131237555119",
-    api_secret="WCvlr9444MkRMkJHdw8HE-N4eCY"
+    cloud_name=os.getenv("CLOUD_NAME"),
+    api_key=os.getenv("API_KEY"),
+    api_secret=os.getenv("API_SECRET")
 )
 
 # ===========================
